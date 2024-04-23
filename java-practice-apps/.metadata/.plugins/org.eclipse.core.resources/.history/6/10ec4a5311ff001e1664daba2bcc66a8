@@ -1,0 +1,21 @@
+package com.example.multithread1;
+
+
+class SmapleLock {
+	private boolean isLocked = false;
+	
+	void lock () {
+		while ( isLocked ) {
+//			wait();
+		}
+		isLocked = true;
+	}
+	
+	void unlock () {
+		isLocked = false;
+//		notify();
+	}
+}
+public class ThreadDemo1 {
+	
+}

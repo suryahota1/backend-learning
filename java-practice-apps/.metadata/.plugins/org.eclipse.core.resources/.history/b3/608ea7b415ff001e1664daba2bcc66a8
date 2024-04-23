@@ -1,0 +1,31 @@
+package com.example.multithread1;
+import java.util.concurrent.*;
+
+
+class SmapleReentrantLock {
+	private boolean isLocked = false;
+	private int lockCount = 0;
+	Thread lockedBy;
+	
+	void lock () {
+		Thread currentThread = Thread.currentThread();
+		while ( isLocked && lockedBy != currentThread ) {
+//			wait();
+		}
+		isLocked = true;
+		lockCount++;
+		lockedBy = currentThread;
+	}
+	
+	void unlock () {
+		if ( Thread.currentThread() == lockedBy ) {
+			if ( --lockCount == 0 ) {
+				isLocked = false;
+//				notify();
+			}
+		}
+	}
+}
+public class ThreadDemo1 {
+	
+}
